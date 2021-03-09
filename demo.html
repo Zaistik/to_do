@@ -22,7 +22,7 @@
 
 			<!-- :key specifie l'element qui est cle de notre donnee-->
 		<!--rendu declaratif //chaque element qui nous interesse -->
-		<ajout></ajout>
+		<ajout @nouvellenote="ajouterNote"></ajout>
 		<note v-for="todo in todos" v-bind:content="todo" @click="inverser"></note>
 	</div>
 
@@ -30,7 +30,6 @@
 		const vm= Vue.createApp({//nouvelle instance de vue
 			data(){//option
 				return{
-					message: 'coucou !',
 					todos:[
 						"choco",
 						"beurre",
@@ -42,9 +41,8 @@
 				inverser(){
 					this.todos.reverse();//permet d'inverser un tbl en javascript
 				},
-				ajouterNote(){
-					this.todos.push(this.message);
-					this.message = '';
+				ajouterNote(message){
+					this.todos.push(message);
 				}
 			}
 		})
@@ -55,9 +53,15 @@
 					interne:'nouveau message'
 				}
 			},
-			template:`<input type="text" v-model="interne"/>
-		<a href="#" @click="ajouterNote" v-if="interne != '' ">Ajouter</a>
-		{{interne}}`})
+			methods:{
+				enregistementNote(){
+					this.$emit('nouvellenote',this.interne)
+				}
+			},
+			template:
+			`<input type="text" v-model="interne"/>
+				<a href="#" @click="enregistementNote" v-if="interne != '' ">Ajouter</a>
+				{{interne}}`})
 		vm.component('note',{
 			props: ['content'],
 			template:`<p> {{content}}</p>`
