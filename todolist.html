@@ -11,7 +11,7 @@
 	<div id="app">
 		<h1>TodoList</h1>
 		<ajout @nouvellenote="ajouterNote"></ajout> 
-		<note v-for="todo in todos" v-bind:content="todo" v-on:remove="todos.splice(index, 1)"></note>
+		<note v-for="(todo, index) in todos" v-bind:content="todo" v-on:remove="todos.splice(index, 1)"></note>
 		
 
 	<script>
