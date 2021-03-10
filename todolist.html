@@ -11,8 +11,8 @@
 	<div id="app">
 		<h1>TodoList</h1>
 		<ajout @nouvellenote="ajouterNote"></ajout> 
-		<note v-for="todo in todos" v-bind:content="todo"></note>
-	</div>
+		<note v-for="todo in todos" v-bind:content="todo" v-on:remove="todos.splice(index, 1)"></note>
+		
 
 	<script>
 		const vm= Vue.createApp({//nouvelle instance de vue
@@ -28,9 +28,10 @@
 			methods:{
 				ajouterNote(message){
 					this.todos.push(message);
-				}
+				},
 			}
 		})
+		
 		vm.component('ajout',{
 			props:[],
 			//tout les event que l'on envois vers des composant parents
@@ -48,12 +49,16 @@
 				}
 			},
 			template:
-			`<input type="text" v-model="interne"/>
-				<a href="#" @click="enregistementNote" v-if="interne != '' ">Ajouter</a>
+			`<p>Ajouter une tache</p>
+			<input type="text" v-model="interne" placeholder="Ex. nourrir le chat"/>
+			<a href="#" @click="enregistementNote" v-if="interne != '' ">Ajouter</a>
 				{{interne}}`})
+
 		vm.component('note',{
 			props: ['content'],
-			template:`<p> {{content}}</p>`
+			template:`<p> {{content}}</p>
+			<button v-on:click="$emit(\'remove\')">Supprimer</button>`
+
 		});
 		vm.mount('#app');//balise sur la quel elle doit se monter
 	</script>
