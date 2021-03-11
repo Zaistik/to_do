@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">  
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Authentification</title>
+
+    <script src="https://unpkg.com/vue@next"></script><!--CDN-->
+</head>
+<body>
+	<div id="app">
+		<h1>Connexion</h1>
+	
+		<connexion></connexion> 
+		
+	</div>
+
+	<script>
+		const vm= Vue.createApp({//nouvelle instance de vue
+			data(){//option
+				return{
+					}
+			},
+			methods:{
+			}
+		})
+
+		vm.component('connexion',{
+			props: [],
+			emits: ['id'],
+			data(){
+				return{
+					utilisateur:'',
+					motdepasse:'',
+				}
+			},
+		methods:{
+				identifiant(){
+					//event personnalisé
+					this.$store.dispatch('co',{
+						utilisateur:this.utilisateur,
+						motdepasse:this.motdepasse,
+					})
+				}	
+			},
+		template:`
+			<label for= "utilisateur">Utilisateur:   </label>
+			<input type="text" v-model="utilisateur" placeholder="Nom/Prenom"/>
+			<br>
+			<label for= "motdepasse">Mot de passe: </label>
+			<input type="password" v-model="motdepasse" placeholder="123abc"/>
+			<br>
+			<a href="#" @click="identifiant">Se connecter</a>
+			`
+		});
+		vm.mount('#app');//balise sur la quel elle doit se monter
+	</script>
+	
+</body>
+</html>
