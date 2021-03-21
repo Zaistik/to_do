@@ -1,0 +1,19 @@
+
+
+<template>
+		<p> {{content}}</p>
+		<button v-on:click="deleteTodo">Supprimer</button>
+</template>
+
+<script>
+		export default {
+		name: 'Supprimer',
+		props: ['content'],
+		methods: {
+				deleteTodo(todo){
+						let index = this.todos.indexOf(todo);
+						this.todos.splice(index,1);
+				},
+		},
+		}
+</script>
