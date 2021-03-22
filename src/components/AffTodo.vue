@@ -39,8 +39,8 @@ import AjoutTodo from './AjoutTodo.vue'
           this.$emit('nouvellenote',this.interne)
           this.interne= '';  
         },
-      ajouterNote(message){
-          this.todos.push(message);
+        ajouterTodo(message){
+          this.todos.push({ name: message ,completed: false })
         },
         deleteTodo(todo){
             let index = this.todos.indexOf(todo);

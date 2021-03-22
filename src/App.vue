@@ -17,8 +17,8 @@
     <li v-for="liste in listes" v-bind:key="liste.name" >
     <br>
     {{liste.name}}
-    <button v-on:click="componentType = 'AffTodo(liste)'">afficher la liste</button>
-    <button v-on:click="deleteListe(liste)">Supprimer</button>
+    <button v-on:click="componentType = 'AffTodo'">afficher la liste</button>
+    <button v-on:click="deleteListe">Supprimer</button>
     <component :is="componentType"></component>
 
     </li>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import AjoutTodo from './components/Ajout.vue'
+import AjoutTodo from './components/AjoutTodo.vue'
 import AjoutListe from './components/AjoutListe.vue'
 import AffTodo from './components/AffTodo.vue'
 
