@@ -45,13 +45,6 @@ export default {
     data(){
         return{
         componentType: null,
-
-        todos:[
-            {name:"tache1",completed: false },
-            {name:"tache2",completed: false },            
-            {name:"tache3",completed: false },            
-            ],
-
         listes:[
             {name:"liste1",completed: false },
             {name:"liste2",completed: false },            
@@ -60,16 +53,10 @@ export default {
         }
     },
     methods:{
-        ajouterTodo(message){
-          this.todos.push({ name: message ,completed: false })
-        },
         ajouterListe(message){
           this.listes.push({ name: message ,completed: false })
         },
-        deleteTodo(todo){
-            let index = this.todos.indexOf(todo);
-            this.todos.splice(index,1);
-        },
+        
         deleteListe(liste){
             let index = this.listes.indexOf(liste);
             this.listes.splice(index,1);
