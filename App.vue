@@ -1,8 +1,9 @@
 <template>
 <div id="app">
+
+    <Connexion></Connexion>
+
     <h1>TACHES</h1>
-
-
     <AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo> 
     <li v-for="todo in todos" v-bind:key="todo.name" >
     <input type='checkbox' v-model="todo.completed">
@@ -10,19 +11,16 @@
     <label for="checkbox"> Completed ? {{ todo.completed }} </label>
     <button v-on:click="deleteTodo(todo)">Supprimer</button>    
     </li>
-        {{todos}}
 
     <h1>LISTES</h1>
     <AjoutListe @nouvelleliste="ajouterListe"></AjoutListe> 
     <li v-for="liste in listes" v-bind:key="liste.name" >
     <br>
-    {{liste.name}}
-    <button v-on:click="componentType = 'AffTodo'">afficher la liste</button>
+    <b>{{liste.name}}</b>
+    <button v-on:click="componentType = 'AffTodo'" >afficher la liste</button>
     <button v-on:click="deleteListe(liste)">Supprimer</button>
     <component :is="componentType"></component>
-
     </li>
-
 
    
 
@@ -35,6 +33,8 @@
 import AjoutTodo from './components/AjoutTodo.vue'
 import AjoutListe from './components/AjoutListe.vue'
 import AffTodo from './components/AffTodo.vue'
+import Connexion from './components/Connexion.vue'
+
 
 
 
@@ -44,7 +44,8 @@ export default {
   components: {
     AjoutTodo,
     AffTodo,
-    AjoutListe
+    AjoutListe,
+    Connexion
     },
 
     data(){
