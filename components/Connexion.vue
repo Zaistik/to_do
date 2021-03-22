@@ -1,5 +1,4 @@
 <template>
-  <h1>CONNEXION</h1>
 	<form @submit.prevent="identifiant()">
 	<label for= "utilisateur">Utilisateur:   </label>
 	<input type="text" v-model="utilisateur" placeholder="Nom/Prenom"/>

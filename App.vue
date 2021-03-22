@@ -1,16 +1,11 @@
 <template>
 <div id="app">
-
+    
+    <h1>CONNEXION</h1>
     <Connexion></Connexion>
 
     <h1>TACHES</h1>
-    <AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo> 
-    <li v-for="todo in todos" v-bind:key="todo.name" >
-    <input type='checkbox' v-model="todo.completed">
-    {{todo.name}}
-    <label for="checkbox"> Completed ? {{ todo.completed }} </label>
-    <button v-on:click="deleteTodo(todo)">Supprimer</button>    
-    </li>
+    <AffTodo></AffTodo>
 
     <h1>LISTES</h1>
     <AjoutListe @nouvelleliste="ajouterListe"></AjoutListe> 
@@ -22,7 +17,6 @@
     <component :is="componentType"></component>
     </li>
 
-   
 
 </div>
 
