@@ -3,7 +3,7 @@
       <input type="text" v-model="interne" placeholder="Ex. Liste à faire demain"/>
       <a href="#" @click="enregistementListe" v-if="interne != '' ">Ajouter une liste</a>
         {{interne}}
-
+      <br>
 </template>
 <script>
     export default {

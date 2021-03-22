@@ -1,9 +1,9 @@
 <template>
 <div id="app">
-    <h1>TodoList</h1>
+    <h1>TACHES</h1>
 
 
-    <AjoutTodo @nouvellenote="ajouterNote"></AjoutTodo> 
+    <AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo> 
     <li v-for="todo in todos" v-bind:key="todo.name" >
     <input type='checkbox' v-model="todo.completed">
     {{todo.name}}
@@ -12,15 +12,19 @@
     </li>
         {{todos}}
 
-
+    <h1>LISTES</h1>
     <AjoutListe @nouvelleliste="ajouterListe"></AjoutListe> 
-    <li v-for="liste in listes" v-bind:key="liste" >
-    {{liste}}
-    <button v-on:click="deleteTodo(liste)">Supprimer</button>    
+    <li v-for="liste in listes" v-bind:key="liste.name" >
+    <br>
+    {{liste.name}}
+    <button v-on:click="componentType = 'AffTodo'">afficher la liste</button>
+    <button v-on:click="deleteListe(liste)">Supprimer</button>
+    <component :is="componentType"></component>
 
     </li>
 
-    
+
+   
 
 </div>
 
@@ -28,43 +32,52 @@
 </template>
 
 <script>
-import AjoutTodo from './components/Ajout.vue'
+import AjoutTodo from './components/AjoutTodo.vue'
 import AjoutListe from './components/AjoutListe.vue'
-//import AffTodo from './components/AffTodo.vue'
+import AffTodo from './components/AffTodo.vue'
 
 
 
 export default {
   name: 'App',
-  props: ['todo'],
+  props: ['todo']['liste'],
   components: {
     AjoutTodo,
-   // AffTodo,
+    AffTodo,
     AjoutListe
     },
 
     data(){
         return{
+        componentType: null,
+
         todos:[
             {name:"tache1",completed: false },
-            {name:"tache1",completed: false },            
-            {name:"tache1",completed: false },            
+            {name:"tache2",completed: false },            
+            {name:"tache3",completed: false },            
             ],
 
         listes:[
-            "liste1",
-            "liste2",
-            "liste3"
+            {name:"liste1",completed: false },
+            {name:"liste2",completed: false },            
+            {name:"liste3",completed: false },  
             ]
         }
     },
     methods:{
-        ajouterNote(message){
+        ajouterTodo(message){
           this.todos.push({ name: message ,completed: false })
+        },
+        ajouterListe(message){
+          this.listes.push({ name: message ,completed: false })
         },
         deleteTodo(todo){
             let index = this.todos.indexOf(todo);
             this.todos.splice(index,1);
+        },
+        deleteListe(liste){
+            let index = this.listes.indexOf(liste);
+            this.listes.splice(index,1);
         },
     }
 }

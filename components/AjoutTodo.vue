@@ -1,6 +1,4 @@
-
 <template>
-<p>Ajouter une tache</p>
       <input type="text" v-model="interne" placeholder="Ex. nourrir le chat"/>
       <a href="#" @click="enregistementNote" v-if="interne != '' ">Ajouter</a>
         {{interne}}
@@ -8,7 +6,7 @@
 </template>
 <script>
     export default {
-      name: 'Ajout',
+      name: 'AjoutTodo',
       props:[],
       
       emits: ['nouvellenote'],
