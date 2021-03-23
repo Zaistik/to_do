@@ -17,7 +17,6 @@
     <button v-on:click="componentType = 'AffTodo'" >afficher la liste</button>
     <button v-on:click="deleteListe(liste)">Supprimer</button>
     <component :is="componentType"></component>
-    <button v-on:click="AffTodo" >afficher la liste</button>
 
     </li>
 
