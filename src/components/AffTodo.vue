@@ -1,12 +1,21 @@
 <template>
 <br>
-<AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo> 
+<AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo>
     <li v-for="todo in todos" v-bind:key="todo.name" >
-    <input type='checkbox' v-model="todo.completed">
-    {{todo.name}}
-    <label for="checkbox"> </label>
-    <button v-on:click="deleteTodo(todo)">Supprimer</button>    
+    <input type='checkbox' v-model="todo.completed" v-if="todo.completed == true" v-on:click="decrease">
+    <input type='checkbox' v-model="todo.completed" v-if="todo.completed == false" v-on:click="increase">
+    <strike v-if="todo.completed == true">{{todo.name}}</strike>
+    <label v-if="todo.completed == false">{{todo.name}}</label>
+    <label for="checkbox" ></label>
+    <button v-on:click="deleteTodo(todo)">Supprimer</button>  
     </li>
+    <p>Nombre de tâches effectuée:
+      <label v-if="compteurFalse != 0">
+      {{compteurFalse}}
+      </label>
+    </p>  
+    
+
 </template>
 
 
@@ -31,10 +40,18 @@ import AjoutTodo from './AjoutTodo.vue'
             {name:"tache2",completed: false },            
             {name:"tache3",completed: false },            
             ],
+          compteurFalse: 0, 
          
         }
       },
       methods:{
+        decrease(){
+          this.compteurFalse = this.compteurFalse - 1
+        },
+        increase(){
+          this.compteurFalse = this.compteurFalse + 1
+        },
+
         enregistementNote(){
           this.$emit('nouvellenote',this.interne)
           this.interne= '';  
