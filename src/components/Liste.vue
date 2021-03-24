@@ -1,6 +1,6 @@
 <template>
 <div>
-  <p> Liste </p>
+  <p> {{name}} {{completed}}</p>
 </div>
 
 </template>
@@ -9,7 +9,8 @@
     export default {
       name: 'Liste',
       props: {
-        name: {type: String, default: "liste"}
+        name: {type: String, default: "liste"},
+        completed: {type : Boolean, default: false}
       }
 
     }

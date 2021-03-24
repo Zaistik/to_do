@@ -1,11 +1,11 @@
 <template>
 <br>
-<AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo> 
+<AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo>
     <li v-for="todo in todos" v-bind:key="todo.name" >
     <input type='checkbox' v-model="todo.completed">
     {{todo.name}}
     <label for="checkbox"> </label>
-    <button v-on:click="deleteTodo(todo)">Supprimer</button>    
+    <button v-on:click="deleteTodo(todo)">Supprimer</button>
     </li>
 </template>
 
@@ -16,28 +16,32 @@
 import AjoutTodo from './AjoutTodo.vue'
 
     export default {
-      name: 'AffTodo',
-      props:[],
+      name: 'Todo',
+      props:
+      [
+        name: {type: String, default: "liste"},
+        completed: {type : Boolean, default: false}
+      ],
       components: {
            AjoutTodo
         },
-      
+
       emits: ['nouvellenote'],
       data(){
         return{
           interne:'une tache',
           todos:[
             {name:"tache1",completed: false },
-            {name:"tache2",completed: false },            
-            {name:"tache3",completed: false },            
+            {name:"tache2",completed: false },
+            {name:"tache3",completed: false },
             ],
-         
+
         }
       },
       methods:{
         enregistementNote(){
           this.$emit('nouvellenote',this.interne)
-          this.interne= '';  
+          this.interne= '';
         },
         ajouterTodo(message){
           this.todos.push({ name: message ,completed: false })
@@ -48,6 +52,6 @@ import AjoutTodo from './AjoutTodo.vue'
         },
     }
   }
-    
+
 
 </script>

@@ -1,0 +1,30 @@
+export default function () {
+    return {
+      listes:[
+          {
+            name:"liste1",
+            todos:[
+              {name:"tache1"},
+              {name:"tache2"},
+              {name:"tache3"}
+            ]
+          },
+          {
+            name:"liste2",
+            todos:[
+              {name:"tache1"},
+              {name:"tache2"},
+              {name:"tache3"}
+            ]
+          },
+          {
+            name:"liste3",
+            todos:[
+              {name:"tache1"},
+              {name:"tache2"},
+              {name:"tache3"}
+            ]
+          }
+      ]
+    }
+}
