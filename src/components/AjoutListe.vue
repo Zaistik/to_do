@@ -1,5 +1,5 @@
 <template>
-<p>Ajouter une liste</p>
+<h3>Ajouter une liste :</h3>
       <input type="text" v-model="interne" placeholder="Ex. Liste à faire demain"/>
       <a href="#" @click="enregistementListe" v-if="interne != '' ">Ajouter une liste</a>
         {{interne}}
