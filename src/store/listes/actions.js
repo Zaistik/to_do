@@ -7,3 +7,7 @@ export function load({ commit }){
             })
 
 }
+
+export function changecompletedvalue({commit}){
+  commit('changecompletedvalue')
+}

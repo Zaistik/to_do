@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
-import todo from './todo';
+import listes from './listes';
 
 export default createStore({
   debug : true,
   modules: {
-    todo
+    listes
   }
 })

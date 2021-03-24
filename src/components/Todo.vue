@@ -1,30 +1,21 @@
 <template>
-<br>
-<AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo>
-    <li v-for="todo in todos" v-bind:key="todo.name" >
-    <input type='checkbox' v-model="todo.completed">
-    {{todo.name}}
-    <label for="checkbox"> </label>
-    <button v-on:click="deleteTodo(todo)">Supprimer</button>
-    </li>
+  <input type='checkbox' v-bind:value="completed" v-on:input="completed=$event">
+  <p> {{name}} </p>
+  <label for="checkbox"> Completed ? {{ completed }} </label>
 </template>
 
 
 
 
 <script>
-import AjoutTodo from './AjoutTodo.vue'
 
     export default {
       name: 'Todo',
       props:
-      [
+      {
         name: {type: String, default: "liste"},
         completed: {type : Boolean, default: false}
-      ],
-      components: {
-           AjoutTodo
-        },
+      },
 
       emits: ['nouvellenote'],
       data(){

@@ -4,25 +4,25 @@ export default function () {
           {
             name:"liste1",
             todos:[
-              {name:"tache1"},
-              {name:"tache2"},
-              {name:"tache3"}
+              {name:"tache1", completed:false},
+              {name:"tache2", completed:false},
+              {name:"tache3", completed:false}
             ]
           },
           {
             name:"liste2",
             todos:[
-              {name:"tache1"},
-              {name:"tache2"},
-              {name:"tache3"}
+              {name:"tache1", completed:false},
+              {name:"tache2", completed:false},
+              {name:"tache3", completed:false}
             ]
           },
           {
             name:"liste3",
             todos:[
-              {name:"tache1"},
-              {name:"tache2"},
-              {name:"tache3"}
+              {name:"tache1", completed:false},
+              {name:"tache2", completed:false},
+              {name:"tache3", completed:false}
             ]
           }
       ]
