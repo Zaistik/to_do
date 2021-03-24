@@ -1,24 +1,27 @@
 <template>
 <div id="app">
-    <h1>INSCRIPTION</h1>
+    <div class="ins_co">
+    <div class="ins">
+    <h1>Inscription</h1>
     <Inscription></Inscription>
+    </div>
 
-    <h1>CONNEXION</h1>
+    <div class="co">
+    <h1>Connexion</h1>
     <Connexion></Connexion>
+    </div>
+    </div>
 
-    <h1>TACHES</h1>
-    <AffTodo></AffTodo>
-
-    <h1>LISTES</h1>
+    <h1>Listes</h1>
     <AjoutListe @nouvelleliste="ajouterListe"></AjoutListe> 
-    <li v-for="liste in listes" v-bind:key="liste.name" >
-    <br>
+    <li class="liste" v-for="liste in listes" v-bind:key="liste.name" >
     <b>{{liste.name}}</b>
     <button v-on:click="componentType = 'AffTodo'" >afficher la liste</button>
     <button v-on:click="deleteListe(liste)">Supprimer</button>
     <component :is="componentType"></component>
-
     </li>
+
+
 
 </div>
 
@@ -68,4 +71,40 @@ export default {
     }
 }
 </script>
+
+<style>
+.ins{  
+border: 3px solid green;
+vertical-align: center;
+margin: auto;
+width: 50%;
+height: 100%;
+padding: 10px;
+}
+.co{  
+border: 3px solid orange;
+vertical-align: center;
+margin: auto;
+width: 50%;
+height: 100%;
+padding: 21px;
+
+}
+.ins_co{
+display: flex;
+padding: 5px;
+grid-template-columns: 1em 1em;
+border: 3px dotted gray;
+
+}
+
+.liste{
+border: 3px solid blue;
+vertical-align: center;
+margin: auto;
+padding: 21px;
+}
+
+#app{background-color: #f7f7f7;}
+</style>
 

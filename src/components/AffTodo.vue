@@ -1,5 +1,7 @@
 <template>
 <br>
+<div class= tache>
+<h3>Ajouter une tache :</h3>
 <AjoutTodo @nouvellenote="ajouterTodo"></AjoutTodo>
     <li v-for="todo in todos" v-bind:key="todo.name" >
     <input type='checkbox' v-model="todo.completed" v-if="todo.completed == true" v-on:click="decrease">
@@ -14,7 +16,7 @@
       {{compteurFalse}}
       </label>
     </p>  
-    
+</div>
 
 </template>
 
@@ -68,3 +70,16 @@ import AjoutTodo from './AjoutTodo.vue'
     
 
 </script>
+<style>
+.tache{ 
+background-color: white ;
+border: 3px solid red;
+vertical-align: right;
+margin-left:50%;
+margin-right:10px;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 44%;
+height: 100%;
+padding: 21px;}
+</style>
